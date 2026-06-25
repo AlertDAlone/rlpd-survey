@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบประเมินผลกิจกรรม RLPD TALK</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Prompt', sans-serif; background-color: #f4f7f6; color: #333; }
+        .container-box { max-width: 800px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .step { display: none; }
+        .step.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 25px; padding: 10px 25px; font-weight: 500; transition: all 0.3s; box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3); }
+        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(118, 75, 162, 0.5); color: white; }
+        .btn-outline-custom { border: 2px solid #667eea; color: #667eea; border-radius: 25px; padding: 10px 25px; font-weight: 500; transition: all 0.3s; }
+        .btn-outline-custom:hover { background: #667eea; color: white; }
+        .poster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-top: 20px; }
+        .poster-card { position: relative; cursor: pointer; border-radius: 10px; overflow: hidden; border: 3px solid transparent; transition: transform 0.2s, border 0.2s; }
+        .poster-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .poster-card:hover { transform: scale(1.03); }
+        .poster-card.selected { border-color: #28a745; transform: scale(1.05); box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4); }
+        .poster-card.selected::after { content: '\f058'; font-family: 'FontAwesome'; position: absolute; top: 10px; right: 10px; color: #28a745; font-size: 24px; background: white; border-radius: 50%; width: 24px; height: 24px; line-height: 24px; text-align: center; }
+        .contact-info { background-color: #eef2f3; padding: 15px; border-radius: 10px; text-align: center; margin-top: 20px; border-left: 5px solid #764ba2; }
+        .option-label { cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: background 0.2s; display: block; margin-bottom: 5px; }
+        .option-label:hover { background-color: #f8f9fa; }
+        .form-check-input:checked + .option-label { font-weight: 500; color: #4a2377; background-color: #f0e6ff; border-left: 3px solid #764ba2; }
+    </style>
+</head>
+<body>
+
+<div class="container container-box">
+    <h3 class="text-center mb-4" style="color: #4a4a4a; font-weight: 600;">
+        <i class="fa-solid fa-clipboard-list text-primary"></i> แบบประเมินผลกิจกรรม RLPD TALK
+    </h3>
+
+    <form id="evalForm">
+        <!-- Step 1 -->
+        <div id="step1" class="step active">
+            <h5 class="border-bottom pb-2 mb-4">ส่วนที่ 1: ข้อมูลส่วนบุคคล</h5>
+            <div class="mb-3"><label class="form-label">ชื่อ-นามสกุล <span class="text-danger">*</span></label><input type="text" class="form-control" id="fullname" required></div>
+            <div class="mb-3"><label class="form-label">ตำแหน่ง <span class="text-danger">*</span></label><input type="text" class="form-control" id="position" required></div>
+            <div class="mb-3">
+                <label class="form-label">สังกัด <span class="text-danger">*</span></label>
+                <select class="form-select" id="department" required onchange="toggleProvince()">
+                    <option value="" disabled selected>-- เลือกสังกัด --</option>
+                    <option value="สำนักงานเลขานุการกรม">สำนักงานเลขานุการกรม</option>
+                    <option value="สำนักงานช่วยเหลือทางการเงินแก่ผู้เสียหายและจำเลยในคดีอาญา">สำนักงานช่วยเหลือทางการเงินแก่ผู้เสียหายและจำเลยในคดีอาญา</option>
+                    <option value="สำนักงานป้องกันและปราบปรามการทรมานและการกระทำให้บุคคลสูญหาย">สำนักงานป้องกันและปราบปรามการทรมานและการกระทำให้บุคคลสูญหาย</option>
+                    <option value="สำนักงานคุ้มครองพยาน">สำนักงานคุ้มครองพยาน</option>
+                    <option value="กองพิทักษ์สิทธิและเสรีภาพ">กองพิทักษ์สิทธิและเสรีภาพ</option>
+                    <option value="กองยุทธศาสตร์และแผนสิทธิมนุษยชนแห่งชาติ">กองยุทธศาสตร์และแผนสิทธิมนุษยชนแห่งชาติ</option>
+                    <option value="กองส่งเสริมการระงับข้อพิพาท">กองส่งเสริมการระงับข้อพิพาท</option>
+                    <option value="กองส่งเสริมสิทธิและเสรีภาพ">กองส่งเสริมสิทธิและเสรีภาพ</option>
+                    <option value="กองสิทธิมนุษยชนระหว่างประเทศ">กองสิทธิมนุษยชนระหว่างประเทศ</option>
+                    <option value="กลุ่มผู้เชี่ยวชาญ">กลุ่มผู้เชี่ยวชาญ</option>
+                    <option value="กองกฎหมาย">กองกฎหมาย</option>
+                    <option value="กลุ่มตรวจสอบภายใน">กลุ่มตรวจสอบภายใน</option>
+                    <option value="กลุ่มพัฒาระบบบริหาร">กลุ่มพัฒนาระบบบริหาร</option>
+                    <option value="ศูนย์ข้อมูลและพัฒนาระบบเทคโนโลยีสารสนเทศ">ศูนย์ข้อมูลและพัฒนาระบบเทคโนโลยีสารสนเทศ</option>
+                    <option value="สำนักงานยุติธรรมจังหวัด">สำนักงานยุติธรรมจังหวัด</option>
+                    <option value="สำนักงานคุ้มครองสิทธิคดีค้ามนุษย์">ศูนย์ปฏิบัติการคุ้มครองสิทธิเสรีภาพและการค้ามนุษย์</option>
+                </select>
+            </div>
+            <div class="mb-3" id="province_box" style="display: none;"><label class="form-label text-primary">ระบุจังหวัด <span class="text-danger">*</span></label><input type="text" class="form-control" id="province_input"></div>
+            <div class="mb-4">
+                <label class="form-label">ประเภทบุคลากร <span class="text-danger">*</span></label>
+                <select class="form-select" id="personnel_type" required>
+                    <option value="" disabled selected>-- เลือกประเภทบุคลากร --</option>
+                    <option value="ข้าราชการ">ข้าราชการ</option>
+                    <option value="พนักงานราชการ">พนักงานราชการ</option>
+                    <option value="ลูกจ้างชั่วคราว">ลูกจ้างชั่วคราว</option>
+                    <option value="จ้างเหมาบริการ">จ้างเหมาบริการ</option>
+                </select>
+            </div>
+            <div class="text-end"><button type="button" class="btn btn-gradient" onclick="nextStep(1, 2)">ถัดไป <i class="fa-solid fa-arrow-right"></i></button></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div id="step2" class="step">
+            <h5 class="border-bottom pb-2 mb-3">ส่วนที่ 2: เลือกกิจกรรมที่เข้าร่วม</h5>
+            <p class="text-muted"><i class="fa-solid fa-hand-pointer"></i> สามารถเลือกได้มากกว่า 1 กิจกรรม โดยคลิกที่ภาพโปสเตอร์</p>
+            <div class="poster-grid" id="posterContainer"></div>
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-outline-custom" onclick="nextStep(2, 1)"><i class="fa-solid fa-arrow-left"></i> ย้อนกลับ</button>
+                <button type="button" class="btn btn-gradient" onclick="goToEvaluation()">ประเมินกิจกรรมที่เลือก <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div id="step3" class="step">
+            <h5 class="border-bottom pb-2 mb-3 text-primary" id="currentEventTitle">ประเมินกิจกรรม: </h5>
+            <div class="mb-4 text-center rounded bg-light p-2" id="pptContainer"></div>
+            <div id="questionsContainer" class="mb-4"></div>
+            <div class="mb-3 mt-4">
+                <label class="form-label fw-bold text-primary">การนำความรู้ไปประยุกต์ใช้ในการปฏิบัติงาน การพัฒนางาน การให้บริการประชาชน หรือการพัฒนาตนเอง (ระบุผลลัพธ์ที่เป็นรูปธรรม) <span class="text-danger">*</span></label>
+                <textarea class="form-control eval-text" id="knowledge" rows="4"></textarea>
+            </div>
+            <div class="mb-4">
+                <label class="form-label fw-bold text-primary">ปัญหา/ข้อจำกัด หรือสิ่งที่อยากให้เพิ่มเติมเพื่อให้การพัฒนางานสมบูรณ์ยิ่งขึ้น <span class="text-danger">*</span></label>
+                <textarea class="form-control eval-text" id="barrier" rows="4"></textarea>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-outline-custom" id="btnPrevEval" onclick="goPrevEvaluation()"><i class="fa-solid fa-arrow-left"></i> กลับไปเลือกงาน</button>
+                <button type="button" class="btn btn-gradient" id="btnNextEval" onclick="processCurrentEvaluation()">บันทึกและถัดไป</button>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div id="step4" class="step">
+            <h5 class="border-bottom pb-2 mb-3">ส่วนที่ 4: ข้อเสนอแนะเพิ่มเติม</h5>
+            <div class="mb-4">
+                <label class="form-label fw-bold text-success">หัวข้อกิจกรรมปีถัดไป หรือเสนอรูปแบบกิจกรรมพัฒนาตนเองใหม่ๆ <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="suggestion_next_year" rows="5"></textarea>
+            </div>
+            <div class="contact-info">
+                <p class="fw-bold">ติดต่อ: กลุ่มงานบริหารและพัฒนาทรัพยากรบุคคล ฝ่ายพัฒนาบุคลากร</p>
+                <p><i class="fa-solid fa-phone"></i> 02 141 2803</p>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-outline-custom" onclick="backFromStep4()"><i class="fa-solid fa-arrow-left"></i> ย้อนกลับ</button>
+                <button type="button" class="btn btn-gradient" onclick="submitForm()"><i class="fa-solid fa-paper-plane"></i> ส่งแบบประเมิน</button>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div id="step5" class="step">
+            <div class="text-center py-5">
+                <i class="fa-solid fa-circle-check text-success mb-4" style="font-size: 5rem;"></i>
+                <h4>บันทึกข้อมูลเรียบร้อยแล้ว</h4>
+                <p>ขอขอบคุณที่ร่วมเป็นส่วนหนึ่งในการพัฒนาองค์กร</p>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMjFuR-vQczdJfdEtcxA0ewomoEcAalBhT9jXOAkKl3ehjAIV2KMm5tDWderFoDQFTKQ/exec';
+    
+    function toggleProvince() {
+        const dept = document.getElementById('department').value;
+        const provBox = document.getElementById('province_box');
+        if (dept === 'สำนักงานยุติธรรมจังหวัด' || dept === 'สำนักงานคุ้มครองสิทธิคดีค้ามนุษย์') {
+            provBox.style.display = 'block';
+            document.getElementById('province_input').required = true;
+        } else {
+            provBox.style.display = 'none';
+            document.getElementById('province_input').required = false;
+            document.getElementById('province_input').value = '';
+        }
+    }
+
+    const eventsData = [
+        { 
+            id: 1, 
+            name: "ครั้งที่ 1: From Grief to Relief จากบาดแผลสู่การเยียวยา", 
+            poster: "https://drive.google.com/thumbnail?id=13pX6HMjfLza7g8ueQh8KhaxHVyub6mAr&sz=w600", 
+            ppts: [{name: "สไลด์ประกอบ", url: "https://docs.google.com/presentation/d/1KJn79YhQp1Phh7Tje0tIupzrW_scmv-V/preview"}] 
+        },
+        { 
+            id: 2, 
+            name: "ครั้งที่ 2: สรุปงานวิจัยและแนวทางการจัดการ", 
+            poster: "https://drive.google.com/thumbnail?id=1htxakegBSJtQA5qOZgTP4USk2cd48a5c&sz=w600", 
+            ppts: [{name: "สไลด์ประกอบ", url: "https://drive.google.com/file/d/11bx5LeURnFq_inLsU1zPPTM0fI1KN_3n/preview"}] 
+        },
+        { 
+            id: 3, 
+            name: "Special ครั้งที่ 1: ถ่ายทอดความรู้จากนักเรียนทุน (Strategy-based)", 
+            poster: "https://drive.google.com/thumbnail?id=1PdvdU2cWzLXn9zQLXZhreZ3pA-DUdqZR&sz=w600", 
+            ppts: [
+                {name: "สไลด์ที่ 1", url: "https://drive.google.com/file/d/14chW3-XOBftSC9QwrIM0QToM22t3yjEm/preview"},
+                {name: "สไลด์ที่ 2", url: "https://drive.google.com/file/d/1Q6U9AlhMJBLUDP7WVl8Mn8HZSiF2uKxH/preview"},
+                {name: "สไลด์ที่ 3", url: "https://drive.google.com/file/d/16OOCSIL9_kEHfD5VpLeq4jpaEr-YL3uo/preview"},
+                {name: "สไลด์ที่ 4", url: "https://drive.google.com/file/d/1l7HLheyVj4tqm9I-9g77DCgiDcmonftX/preview"},
+                {name: "สไลด์ที่ 5", url: "https://drive.google.com/file/d/1yjCajreIEeMFIBq0FWYRUW20Bn6_vtES/preview"},
+                {name: "สไลด์ที่ 6", url: "https://drive.google.com/file/d/15PJMcGtTDgFW2NZEFKuK3KBll3y4QvnX/preview"},
+                {name: "สไลด์ที่ 7", url: "https://drive.google.com/file/d/1ISs9RxRk4bxLcpbtwPhxsflOAsuPMFw9/preview"},
+                {name: "สไลด์ที่ 8", url: "https://drive.google.com/file/d/11U_X4EKZ_mkEvNKicMCszYPXmeIVc_x9/preview"},
+                {name: "สไลด์ที่ 9", url: "https://drive.google.com/file/d/1PkIm-CehRIw9LfX89NeWWmohr0HdJLKM/preview"},
+                {name: "สไลด์ที่ 10", url: "https://drive.google.com/file/d/13-WRoLkN_mUiy-F7T6ZJoN3B6inUvRtk/preview"},
+                {name: "สไลด์ที่ 11", url: "https://drive.google.com/file/d/1u-KSv5r_n_ETBGvaqvJXfwslDEL0S5NC/preview"},
+                {name: "สไลด์ที่ 12", url: "https://drive.google.com/file/d/1jJZwytxrE3SQvv3P_0ZCxrX0p-FRii1w/preview"},
+                {name: "สไลด์ที่ 13", url: "https://drive.google.com/file/d/1_WRjQ-h_7GBZRoEYIcshdlCEBgAOKTw0/preview"},
+                {name: "สไลด์ที่ 14", url: "https://drive.google.com/file/d/1itXypHcHUp2_NUSEorOGJdpBtEbwjvzQ/preview"},
+                {name: "สไลด์ที่ 15", url: "https://drive.google.com/file/d/1qwOePBo5YiN2zfXEAJs4RUK6xr8p740X/preview"},
+                {name: "สไลด์ที่ 16", url: "https://drive.google.com/file/d/1RV7_J29hFz60HMKxRojIF0yFgtOKbbjh/preview"},
+                {name: "สไลด์ที่ 17", url: "https://drive.google.com/file/d/1--w5Fp0PA9P2QTzGCCYnrRzvbWDhqvgv/preview"},
+                {name: "สไลด์ที่ 18", url: "https://drive.google.com/file/d/1Ncw3VW3OlF2qIRclQEEAnSW0rmD1mT-M/preview"},
+                {name: "สไลด์ที่ 19", url: "https://drive.google.com/file/d/1bpHA6MiSZxXH9ika8GNYuiPVTywEFHHf/preview"},
+                {name: "สไลด์ที่ 20", url: "https://drive.google.com/file/d/1VweKB8TfW0N8Tcy0zSKMKLzxjTw6bPiL/preview"}
+            ] 
+        },
+        { 
+            id: 4, 
+            name: "ครั้งที่ 3: เรื่องนี้ต้องบอกต่อ...by กลุ่มงานคลัง", 
+            poster: "https://drive.google.com/thumbnail?id=1ubqq3nAr3xi_sHmpIp4xe-l1Uwdyc_n4&sz=w600", 
+            ppts: [{name: "สไลด์ประกอบ", url: "https://drive.google.com/file/d/1gA6QBvFKP5K8uMU6clk0KGzSZxpMpSYT/preview"}] 
+        },
+        { 
+            id: 5, 
+            name: "ครั้งที่ 4: มาตรการใหม่ในระบบกฎหมายไทย : การปรับเป็นพินัย ลดความเหลื่อมล้ำ ไม่เสียประวัติอาชญากรรม ทำผิดสถานเบา ไม่ต้องเข้าคุก", 
+            poster: "https://drive.google.com/thumbnail?id=1C_4GS8NV2AbTE4s2l3o7Zp_Scm5doNyz&sz=w600", 
+            ppts: [{name: "สไลด์ประกอบ", url: "https://drive.google.com/file/d/126ODoHcmaYTNHWz7u4YF0d2_Nq89ABt3/preview"}] 
+        },
+        { 
+            id: 6, 
+            name: "Special ครั้งที่ 2: การตรวจสอบข้อมูลข้อเท็จจริงและพฤติการณ์ ความไม่ปลอดภัย คำร้องขอใช้มาตรการ ในการคุ้มครองพยานในคดีอาญา", 
+            poster: "https://drive.google.com/thumbnail?id=1o6kP6JgqMNErvN60_8QvuMO3edvHh_R0&sz=w600", 
+            ppts: [{name: "สไลด์ประกอบ", url: "https://drive.google.com/file/d/1VnIabd6duwZa6YUuHA2fiUPDfWDUIwuG/preview"}] 
+        },
+        { 
+            id: 7, 
+            name: "ครั้งที่ 5: อาชีพราชการกับความยุติธรรมที่หายไป", 
+            poster: "https://drive.google.com/thumbnail?id=1YTHDGTmNkYAayduiygc1ZspAuwx8jo26&sz=w600", 
+            ppts: [
+                {name: "สไลด์ที่ 1", url: "https://drive.google.com/file/d/1Rm51aibM3FKM8xp7h2SLUnQLd32yNgWZ/preview"},
+                {name: "สไลด์ที่ 2", url: "https://drive.google.com/file/d/1NlQYlTKeepI5DbNY2pAba5QuqHR6_ENl/preview"}
+            ] 
+        },
+        { 
+            id: 8, 
+            name: "ครั้งที่ 6: การเตรียมผลงานเพื่อรับรางวัลอันทรงเกียรติ ของผู้ไกล่เกลี่ย และ ศกช.", 
+            poster: "https://drive.google.com/thumbnail?id=1rGYDEdVw3x2XCpHUmzEoQZQB9p_xrl2p&sz=w600", 
+            ppts: [
+                {name: "สไลด์ที่ 1", url: "https://drive.google.com/file/d/188aaybH6VecoFGP23P3lhmRkHM8BOAAQ/preview"},
+                {name: "สไลด์ที่ 2", url: "https://drive.google.com/file/d/1eOpEw9Ffwkc9L07PYeLtBmz05siKGig9/preview"}
+            ] 
+        },
+        { 
+            id: 9, 
+            name: "ครั้งที่ 7: เสริมองค์ความรู้ด้านการสื่อสารเพื่อขยายผลสิทธิมนุษยชน", 
+            poster: "https://drive.google.com/thumbnail?id=13mJUpZPKYs00LB5KCHLuF41NGhW3OZCA&sz=w600", 
+            ppts: [{name: "สไลด์ประกอบ", url: "https://drive.google.com/file/d/1YXqh_GwuoNVJGjmWzbSDJHF3f2F_QW8N/preview"}] 
+        },
+        { 
+            id: 10, 
+            name: "Special ครั้งที่ 3: ชี้แจงการจัดทำและรายงานแผนพัฒนารายบุคคล (IDP) ประจำปีงบประมาณ พ.ศ.2569", 
+            poster: "https://drive.google.com/thumbnail?id=14TvLPbNtSsi0MK6X6z5ZCjBmoFEIFpqk&sz=w600", 
+            ppts: [
+                {name: "สไลด์ที่ 1", url: "https://drive.google.com/file/d/1MDH_TTnBvhdsm2-FW2DeBsM5Qj_75yg4/preview"},
+                {name: "สไลด์ที่ 2", url: "https://drive.google.com/file/d/1DtHPyfqzjuldMHjYwU_Iv6yzGQia5tgx/preview"}
+            ] 
+        }
+    ];
+
+    const questionsList = [
+        { id: "q1", title: "1. ความเข้าใจในเนื้อหาภาพรวมจากการเข้าร่วมกิจกรรม", options: ["ไม่เข้าใจเลย", "พอเข้าใจบ้าง", "เข้าใจระดับปานกลาง", "เข้าใจดี", "เข้าใจดีมาก"] },
+        { id: "q2", title: "2. ประโยชน์และการได้รับข้อมูลใหม่ๆ จากกิจกรรม", options: ["ไม่ได้รับประโยชน์", "ได้รับประโยชน์น้อย", "ได้รับประโยชน์ปานกลาง", "ได้รับประโยชน์มาก", "ได้รับประโยชน์มากที่สุด"] },
+        { id: "q3", title: "3. การมองเห็นไอเดียหรือโอกาสในการนำความรู้มาพัฒนาตนเอง", options: ["มองไม่เห็นโอกาส", "มองเห็นโอกาสน้อย", "มองเห็นโอกาสปานกลาง", "มองเห็นโอกาสชัดเจน", "มองเห็นโอกาสชัดเจนมาก"] },
+        { id: "q4", title: "4. การนำความรู้มาช่วยดูแลงานให้ราบรื่นและลดข้อผิดพลาด", options: ["ไม่ช่วยเลย", "ช่วยได้น้อย", "ช่วยได้ปานกลาง", "ช่วยได้มาก", "ช่วยได้มากที่สุด"] }
+    ];
+
+    let selectedEvents = [], currentEventIndex = 0, evaluationsMap = {};
+
+    const posterContainer = document.getElementById('posterContainer');
+    eventsData.forEach(ev => {
+        const div = document.createElement('div');
+        div.className = 'poster-card';
+        div.innerHTML = `<img src="${ev.poster}" alt="${ev.name}"><div class="p-2 text-center small fw-bold text-truncate" style="font-size:0.8rem;" title="${ev.name}">${ev.name}</div>`;
+        div.onclick = function() {
+            this.classList.toggle('selected');
+            if (this.classList.contains('selected')) selectedEvents.push(ev);
+            else selectedEvents = selectedEvents.filter(e => e.id !== ev.id);
+        };
+        posterContainer.appendChild(div);
+    });
+
+    const qContainer = document.getElementById('questionsContainer');
+    questionsList.forEach(q => {
+        let html = `<div class="mb-4"><label class="form-label fw-bold">${q.title} <span class="text-danger">*</span></label><div class="mt-2">`;
+        q.options.forEach((opt, idx) => {
+            html += `<div class="form-check d-flex align-items-center mb-1"><input class="form-check-input eval-radio mt-0" type="radio" name="${q.id}" id="${q.id}_${idx}" value="${idx + 1}" style="margin-right:10px;"><label class="form-check-label option-label flex-grow-1" for="${q.id}_${idx}">${opt}</label></div>`;
+        });
+        html += `</div></div>`;
+        qContainer.innerHTML += html;
+    });
+
+    function nextStep(c, n) {
+        if(c === 1) {
+            const inputs = document.getElementById('step1').querySelectorAll('input, select');
+            for(let i of inputs) if(!i.checkValidity()) { i.reportValidity(); return; }
+        }
+        document.getElementById(`step${c}`).classList.remove('active');
+        document.getElementById(`step${n}`).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function goToEvaluation() {
+        if (selectedEvents.length === 0) { alert("กรุณาเลือกกิจกรรม"); return; }
+        currentEventIndex = 0; showEventEvaluation(); nextStep(2, 3);
+    }
+
+    function saveCurrentFormToData() {
+        if (selectedEvents.length === 0) return;
+        const evId = selectedEvents[currentEventIndex].id;
+        evaluationsMap[evId] = {
+            event_name: selectedEvents[currentEventIndex].name,
+            q1: document.querySelector('input[name="q1"]:checked')?.value || "",
+            q2: document.querySelector('input[name="q2"]:checked')?.value || "",
+            q3: document.querySelector('input[name="q3"]:checked')?.value || "",
+            q4: document.querySelector('input[name="q4"]:checked')?.value || "",
+            knowledge_text: document.getElementById('knowledge').value,
+            barrier_text: document.getElementById('barrier').value
+        };
+    }
+
+    function showEventEvaluation() {
+        const ev = selectedEvents[currentEventIndex];
+        document.getElementById('currentEventTitle').innerText = `ประเมินกิจกรรม: ${ev.name} (${currentEventIndex + 1}/${selectedEvents.length})`;
+        
+        document.querySelectorAll('.eval-radio').forEach(el => el.checked = false);
+        const data = evaluationsMap[ev.id];
+        if(data) {
+            ['q1','q2','q3','q4'].forEach(q => { if(data[q]) document.querySelector(`input[name="${q}"][value="${data[q]}"]`).checked = true; });
+            document.getElementById('knowledge').value = data.knowledge_text;
+            document.getElementById('barrier').value = data.barrier_text;
+        } else {
+            document.getElementById('knowledge').value = "";
+            document.getElementById('barrier').value = "";
+        }
+
+        const pptBox = document.getElementById('pptContainer');
+        if (ev.ppts.length === 0) {
+            pptBox.innerHTML = "<p class='mb-1 text-muted'>ไม่มีเอกสารประกอบ</p>";
+        } else if (ev.ppts.length === 1) {
+            pptBox.innerHTML = `<iframe src="${ev.ppts[0].url}" width="100%" height="450" style="border:none; border-radius: 8px; background:#eee;"></iframe>`;
+        } else {
+            let opts = ev.ppts.map(p => `<option value="${p.url}">${p.name}</option>`).join('');
+            pptBox.innerHTML = `
+                <div class="d-flex flex-column mb-2 text-start">
+                    <label class="text-muted small mb-1 fw-bold">เอกสารประกอบ (เลือกเพื่อดูสไลด์ถัดไป)</label>
+                    <select class="form-select mb-2 border-primary" onchange="document.getElementById('slideFrame').src=this.value">
+                        ${opts}
+                    </select>
+                </div>
+                <iframe id="slideFrame" src="${ev.ppts[0].url}" width="100%" height="450" style="border:none; border-radius: 8px; background:#eee;"></iframe>
+            `;
+        }
+        
+        document.getElementById('btnPrevEval').innerHTML = currentEventIndex === 0 ? '<i class="fa-solid fa-arrow-left"></i> กลับไปเลือกงาน' : '<i class="fa-solid fa-arrow-left"></i> ก่อนหน้า';
+        document.getElementById('btnNextEval').innerHTML = currentEventIndex === selectedEvents.length - 1 ? 'เสร็จสิ้น ไปหน้าถัดไป' : 'บันทึกและถัดไป';
+    }
+
+    function goPrevEvaluation() {
+        saveCurrentFormToData();
+        if (currentEventIndex === 0) nextStep(3, 2);
+        else { currentEventIndex--; showEventEvaluation(); }
+    }
+
+    function processCurrentEvaluation() {
+        if(!document.querySelector('input[name="q1"]:checked') || !document.getElementById('knowledge').value.trim() || !document.getElementById('barrier').value.trim()) { 
+            alert("กรุณากรอกให้ครบทุกช่อง"); 
+            return; 
+        }
+        saveCurrentFormToData();
+        currentEventIndex++;
+        if (currentEventIndex < selectedEvents.length) showEventEvaluation();
+        else nextStep(3, 4);
+    }
+
+    function backFromStep4() { currentEventIndex = selectedEvents.length - 1; showEventEvaluation(); nextStep(4, 3); }
+
+    async function submitForm() {
+        if(!document.getElementById('suggestion_next_year').value.trim()) { alert("กรุณากรอกข้อเสนอแนะ"); return; }
+        const btn = document.querySelector('button[onclick="submitForm()"]');
+        btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> กำลังส่งข้อมูล...';
+        const payload = {
+            fullname: document.getElementById('fullname').value, position: document.getElementById('position').value,
+            department: document.getElementById('department').value + (document.getElementById('province_input').value ? " จ."+document.getElementById('province_input').value : ""),
+            personnel_type: document.getElementById('personnel_type').value,
+            evaluations: selectedEvents.map(ev => {
+                const data = evaluationsMap[ev.id];
+                const tScore = parseInt(data.q1||0) + parseInt(data.q2||0) + parseInt(data.q3||0) + parseInt(data.q4||0);
+                return {...data, total_score: tScore};
+            }),
+            suggestion_next_year: document.getElementById('suggestion_next_year').value
+        };
+        try {
+            await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'text/plain;charset=utf-8' } });
+            document.getElementById('step4').classList.remove('active');
+            document.getElementById('step5').classList.add('active');
+            window.scrollTo(0,0);
+        } catch(e) { 
+            document.getElementById('step4').classList.remove('active');
+            document.getElementById('step5').classList.add('active');
+            window.scrollTo(0,0);
+        }
+    }
+</script>
+</body>
+</html>
