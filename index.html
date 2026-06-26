@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบติดตามผลกิจกรรม RLPD TALK</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Prompt', sans-serif; background-color: #f4f7f6; color: #333; }
+        .container-box { max-width: 800px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .step { display: none; }
+        .step.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 25px; padding: 10px 25px; font-weight: 500; transition: all 0.3s; box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3); }
+        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(118, 75, 162, 0.5); color: white; }
+        .btn-outline-custom { border: 2px solid #667eea; color: #667eea; border-radius: 25px; padding: 10px 25px; font-weight: 500; transition: all 0.3s; }
+        .btn-outline-custom:hover { background: #667eea; color: white; }
+        .poster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-top: 20px; }
+        .poster-card { position: relative; cursor: pointer; border-radius: 10px; overflow: hidden; border: 3px solid transparent; transition: transform 0.2s, border 0.2s; background: #f8f9fa; }
+        .poster-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .poster-card:hover { transform: scale(1.03); }
+        .poster-card.selected { border-color: #28a745; transform: scale(1.05); box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4); }
+        .poster-card.selected::after { content: '\f058'; font-family: 'FontAwesome'; position: absolute; top: 10px; right: 10px; color: #28a745; font-size: 24px; background: white; border-radius: 50%; width: 24px; height: 24px; line-height: 24px; text-align: center; }
+        .contact-info { background-color: #eef2f3; padding: 15px; border-radius: 10px; text-align: center; margin-top: 20px; border-left: 5px solid #764ba2; }
+        .option-label { cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: background 0.2s; display: block; margin-bottom: 5px; }
+        .option-label:hover { background-color: #f8f9fa; }
+        .form-check-input:checked + .option-label { font-weight: 500; color: #4a2377; background-color: #f0e6ff; border-left: 3px solid #764ba2; }
+        .consent-box { background-color: #f8f9fa; border-left: 4px solid #667eea; padding: 15px; border-radius: 8px; }
+        .alert-instruction { background-color: #e3f2fd; border: 1px solid #90caf9; border-radius: 8px; padding: 15px; color: #0d47a1; margin-bottom: 25px; }
+        .example-box { background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; border-radius: 8px; font-size: 0.9rem; margin-bottom: 15px; }
+        .slide-review-box { background: #fdfdfd; border: 1px solid #e0e0e0; border-radius: 10px; padding: 20px; margin-bottom: 30px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
+    </style>
+</head>
+<body>
+
+<div class="container container-box">
+    <h3 class="text-center mb-4" style="color: #4a4a4a; font-weight: 600;">
+        <i class="fa-solid fa-clipboard-list text-primary"></i> แบบติดตามผลกิจกรรม RLPD TALK
+    </h3>
+
+    <form id="evalForm">
+        <!-- ================= Step 1 ================= -->
+        <div id="step1" class="step active">
+            
+            <!-- คำชี้แจง -->
+            <div class="alert-instruction shadow-sm">
+                <h6 class="fw-bold mb-2"><i class="fa-solid fa-circle-info"></i> คำชี้แจง</h6>
+                <p class="mb-2" style="font-size: 0.95rem;">สำนักงานเลขานุการกรม โดยกลุ่มงานบริหารและพัฒนาทรัพยากรบุคคล จัดทำแบบติดตามผลฉบับนี้ เพื่อรวบรวมข้อมูลการนำความรู้ แนวคิด หรือประสบการณ์ที่ได้รับจากกิจกรรม RLPD TALK ไปประยุกต์ใช้ในการปฏิบัติงาน ตลอดจนใช้ประกอบการติดตามและประเมินผลสัมฤทธิ์ของกิจกรรม และการรายงานผลการดำเนินงานด้านการพัฒนาบุคลากรของกรม</p>
+                <p class="mb-0 fw-bold" style="font-size: 0.95rem;">โปรดตอบแบบสอบถามตามข้อเท็จจริง โดยข้อมูลของท่านจะนำไปใช้เพื่อการพัฒนาการจัดกิจกรรมให้เกิดประสิทธิภาพยิ่งขึ้น</p>
+            </div>
+
+            <h5 class="border-bottom pb-2 mb-4">ส่วนที่ 1: ข้อมูลส่วนบุคคล</h5>
+            <div class="mb-3"><label class="form-label">ชื่อ-นามสกุล <span class="text-danger">*</span></label><input type="text" class="form-control" id="fullname" required></div>
+            <div class="mb-3"><label class="form-label">ตำแหน่ง <span class="text-danger">*</span></label><input type="text" class="form-control" id="position" required></div>
+            <div class="mb-3">
+                <label class="form-label">สังกัด <span class="text-danger">*</span></label>
+                <select class="form-select" id="department" required onchange="toggleProvince()">
+                    <option value="" disabled selected>-- เลือกสังกัด --</option>
+                    <option value="สำนักงานเลขานุการกรม">สำนักงานเลขานุการกรม</option>
+                    <option value="สำนักงานช่วยเหลือทางการเงินแก่ผู้เสียหายและจำเลยในคดีอาญา">สำนักงานช่วยเหลือทางการเงินแก่ผู้เสียหายและจำเลยในคดีอาญา</option>
+                    <option value="สำนักงานป้องกันและปราบปรามการทรมานและการกระทำให้บุคคลสูญหาย">สำนักงานป้องกันและปราบปรามการทรมานและการกระทำให้บุคคลสูญหาย</option>
+                    <option value="สำนักงานคุ้มครองพยาน">สำนักงานคุ้มครองพยาน</option>
+                    <option value="กองพิทักษ์สิทธิและเสรีภาพ">กองพิทักษ์สิทธิและเสรีภาพ</option>
+                    <option value="กองยุทธศาสตร์และแผนสิทธิมนุษยชนแห่งชาติ">กองยุทธศาสตร์และแผนสิทธิมนุษยชนแห่งชาติ</option>
+                    <option value="กองส่งเสริมการระงับข้อพิพาท">กองส่งเสริมการระงับข้อพิพาท</option>
+                    <option value="กองส่งเสริมสิทธิและเสรีภาพ">กองส่งเสริมสิทธิและเสรีภาพ</option>
+                    <option value="กองสิทธิมนุษยชนระหว่างประเทศ">กองสิทธิมนุษยชนระหว่างประเทศ</option>
+                    <option value="กลุ่มผู้เชี่ยวชาญ">กลุ่มผู้เชี่ยวชาญ</option>
+                    <option value="กองกฎหมาย">กองกฎหมาย</option>
+                    <option value="กลุ่มตรวจสอบภายใน">กลุ่มตรวจสอบภายใน</option>
+                    <option value="กลุ่มพัฒนาระบบบริหาร">กลุ่มพัฒาระบบบริหาร</option>
+                    <option value="ศูนย์ข้อมูลและพัฒนาระบบเทคโนโลยีสารสนเทศ">ศูนย์ข้อมูลและพัฒนาระบบเทคโนโลยีสารสนเทศ</option>
+                    <option value="สำนักงานยุติธรรมจังหวัด">สำนักงานยุติธรรมจังหวัด</option>
+                    <option value="ศูนย์ปฏิบัติการคุ้มครองสิทธิคดีค้ามนุษย์">ศูนย์ปฏิบัติการคุ้มครองสิทธิคดีค้ามนุษย์</option>
+                </select>
+            </div>
+            <div class="mb-3" id="province_box" style="display: none;"><label class="form-label text-primary">ระบุจังหวัด <span class="text-danger">*</span></label><input type="text" class="form-control" id="province_input"></div>
+            <div class="mb-4">
+                <label class="form-label">ประเภทบุคลากร <span class="text-danger">*</span></label>
+                <select class="form-select" id="personnel_type" required>
+                    <option value="" disabled selected>-- เลือกประเภทบุคลากร --</option>
+                    <option value="ข้าราชการ">ข้าราชการ</option>
+                    <option value="พนักงานราชการ">พนักงานราชการ</option>
+                    <option value="ลูกจ้างชั่วคราว">ลูกจ้างชั่วคราว</option>
+                    <option value="จ้างเหมาบริการ">จ้างเหมาบริการ</option>
+                </select>
+            </div>
+
+            <div class="mb-4 consent-box">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="pdpa_consent" required>
+                    <label class="form-check-label text-muted small" for="pdpa_consent" style="cursor: pointer;">
+                        <span class="fw-bold text-dark">การยินยอมเปิดเผยข้อมูล:</span> ข้าพเจ้ายินยอมให้เก็บรวบรวมและใช้ข้อมูลส่วนบุคคลสำหรับการประเมินผลกิจกรรมในครั้งนี้ ทั้งนี้ ข้อมูลของท่านจะถูกเก็บรักษาเป็นความลับอย่างเคร่งครัด และนำไปใช้เพื่อประโยชน์ในการพัฒนาองค์กรเท่านั้น
+                    </label>
+                </div>
+            </div>
+
+            <div class="contact-info mb-4">
+                <p class="fw-bold mb-1">สอบถามข้อมูลเพิ่มเติมติดต่อ: กลุ่มงานบริหารและพัฒนาทรัพยากรบุคคล ฝ่ายพัฒนาบุคลากร</p>
+                <p class="mb-1"><i class="fa-solid fa-phone"></i> 02 141 2803</p>
+                <p class="mb-0"><i class="fa-solid fa-phone"></i> นางสาวนิศาชล ชาญวารินทร์ 080 618 0133</p>
+            </div>
+
+            <div class="text-end"><button type="button" class="btn btn-gradient" onclick="showStep1To2()">ถัดไป <i class="fa-solid fa-arrow-right"></i></button></div>
+        </div>
+
+        <!-- ================= Step 2 ================= -->
+        <div id="step2" class="step">
+            <h5 class="border-bottom pb-2 mb-3">ส่วนที่ 2: เลือกกิจกรรมที่เข้าร่วม</h5>
+            <p class="text-muted"><i class="fa-solid fa-hand-pointer"></i> สามารถเลือกได้มากกว่า 1 กิจกรรม โดยคลิกที่ภาพโปสเตอร์</p>
+            <div class="poster-grid" id="posterContainer"></div>
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-outline-custom" onclick="showStep('step1')"><i class="fa-solid fa-arrow-left"></i> ย้อนกลับ</button>
+                <button type="button" class="btn btn-gradient" onclick="prepareStep3()">ถัดไป <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- ================= Step 3: ทบทวนสไลด์และประเมินผลรวม ================= -->
+        <div id="step3" class="step">
+            
+            <h5 class="border-bottom pb-2 mb-4 text-primary"><i class="fa-solid fa-file-powerpoint"></i> ส่วนที่ 3: ทบทวนเนื้อหาและประเมินผลกิจกรรม</h5>
+            
+            <!-- โซนทบทวนสไลด์ -->
+            <div class="slide-review-box" id="masterSlideContainer">
+                <!-- เนื้อหาสไลด์จะถูกสร้างด้วย Javascript ตามกิจกรรมที่เลือก -->
+            </div>
+
+            <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-clipboard-check text-success"></i> แบบประเมินผลการนำความรู้ไปใช้ (ประเมินภาพรวมจากกิจกรรมที่ท่านเลือก)</h6>
+            
+            <!-- คำถามข้อ 1 -->
+            <div class="mb-4">
+                <label class="form-label fw-bold">ภายหลังการเข้าร่วมกิจกรรม RLPD TALK ท่านได้นำความรู้หรือแนวคิดที่ได้รับไปใช้ประโยชน์แล้วหรือไม่ <span class="text-danger">*</span></label>
+                <div class="mt-2">
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="q1" id="q1_5" value="5"><label class="form-check-label option-label" for="q1_5">นำไปใช้แล้ว</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="q1" id="q1_4" value="4"><label class="form-check-label option-label" for="q1_4">นำไปใช้อยู่บ้าง</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="q1" id="q1_3" value="3"><label class="form-check-label option-label" for="q1_3">นำไปใช้เป็นครั้งคราว</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="q1" id="q1_2" value="2"><label class="form-check-label option-label" for="q1_2">ยังไม่มีโอกาสนำไปใช้</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="q1" id="q1_1" value="1"><label class="form-check-label option-label" for="q1_1">ไม่เกี่ยวกับลักษณะงาน</label></div>
+                </div>
+            </div>
+
+            <!-- คำถามข้อ 3 -->
+            <div class="mb-4">
+                <label class="form-label fw-bold">ความรู้ที่ได้รับจาก RLPD TALK มีประโยชน์ต่อการปฏิบัติงานของท่านในระดับใด <span class="text-danger">*</span></label>
+                <div class="mt-2">
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="q3" id="q3_5" value="5"><label class="form-check-label option-label" for="q3_5">มีประโยชน์สูงสุดและสามารถนำไปต่อยอดได้อย่างชัดเจน</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="q3" id="q3_4" value="4"><label class="form-check-label option-label" for="q3_4">มีประโยชน์มากและนำไปปรับใช้กับงานได้จริง</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="q3" id="q3_3" value="3"><label class="form-check-label option-label" for="q3_3">มีประโยชน์ปานกลาง พอเป็นแนวทางในการปฏิบัติงานได้</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="q3" id="q3_2" value="2"><label class="form-check-label option-label" for="q3_2">มีประโยชน์เบื้องต้น แต่อาจยังไม่สอดคล้องกับงานมากนัก</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="q3" id="q3_1" value="1"><label class="form-check-label option-label" for="q3_1">ยังไม่เห็นประโยชน์หรือความเชื่อมโยงกับงานที่รับผิดชอบ</label></div>
+                </div>
+            </div>
+
+            <!-- แสดงเมื่อเลือกนำไปใช้ (Q1 >= 3) -->
+            <div id="group_used" style="display: none;">
+                <!-- คำถามการนำไปใช้ลักษณะใด -->
+                <div class="mb-4 bg-white p-3 border rounded">
+                    <label class="form-label fw-bold text-success">หากท่านนำไปใช้แล้ว ท่านนำไปใช้ในลักษณะใด (เลือกได้มากกว่า 1 ข้อ)</label>
+                    <div class="mt-2">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="q2" id="q2_1" value="ใช้เป็นแนวทางในการแก้ไขปัญหาการทำงาน"><label class="form-check-label" for="q2_1">ใช้เป็นแนวทางในการแก้ไขปัญหาการทำงาน</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="q2" id="q2_2" value="นำไปปรับวิธีการทำงานของตนเอง"><label class="form-check-label" for="q2_2">นำไปปรับวิธีการทำงานของตนเอง</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="q2" id="q2_3" value="ถ่ายทอดหรือแลกเปลี่ยนให้เพื่อนร่วมงาน"><label class="form-check-label" for="q2_3">ถ่ายทอดหรือแลกเปลี่ยนให้เพื่อนร่วมงาน</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="q2" id="q2_4" value="ใช้ประกอบการให้บริการประชาชน"><label class="form-check-label" for="q2_4">ใช้ประกอบการให้บริการประชาชน</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="q2" id="q2_5" value="ใช้เป็นข้อมูลในการวางแผนงานหรือโครงการ"><label class="form-check-label" for="q2_5">ใช้เป็นข้อมูลในการวางแผนงานหรือโครงการ</label></div>
+                        <div class="form-check mt-2 d-flex align-items-center">
+                            <input class="form-check-input me-2" type="checkbox" name="q2" id="q2_other_check" value="other">
+                            <label class="form-check-label text-nowrap me-2" for="q2_other_check">อื่น ๆ ระบุ:</label>
+                            <input type="text" class="form-control form-control-sm w-75" id="q2_other_text" placeholder="ระบุเพิ่มเติม (ไม่บังคับ)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- คำถามข้อ 5 -->
+                <div class="mb-4 bg-white p-3 border rounded border-success">
+                    <label class="form-label fw-bold text-success">โปรดอธิบายผลที่เกิดขึ้นจากการนำความรู้หรือแนวคิดที่ได้รับจากกิจกรรม RLPD TALK ไปใช้ในการปฏิบัติงาน</label>
+                    
+                    <div class="example-box">
+                        <p class="fw-bold mb-1"><i class="fa-regular fa-lightbulb"></i> ตัวอย่างการนำความรู้ไปใช้ที่เกิดขึ้นจริง:</p>
+                        <ul class="mb-0 text-muted ps-3">
+                            <li>นำแนวทางการใช้ AI มาช่วยร่างหนังสือราชการ ทำให้จัดทำหนังสือได้สะดวกขึ้น</li>
+                            <li>นำข้อมูลจากการบรรยายไปใช้ตอบข้อซักถามของประชาชนได้ถูกต้องมากขึ้น</li>
+                            <li>ถ่ายทอดความรู้ที่ได้รับให้เพื่อนร่วมงานในหน่วยงาน</li>
+                            <li>นำแนวคิดไปปรับปรุงขั้นตอนการทำงานให้เหมาะสมกับงานที่รับผิดชอบ</li>
+                            <li>นำข้อมูลไปใช้ประกอบการจัดทำโครงการหรือการวางแผนงาน</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-dark">5.1 ท่านนำความรู้หรือแนวคิดไปใช้ในเรื่องใด <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="q5_1" rows="2"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-dark">5.2 มีการเปลี่ยนแปลงวิธีการทำงานอย่างไร <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="q5_2" rows="2"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-dark">5.3 ผลที่เกิดขึ้นกับการปฏิบัติงาน หรือการให้บริการประชาชนเป็นอย่างไร <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="q5_3" rows="2"></textarea>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label text-dark">5.4 หากมีผลลัพธ์ที่เห็นได้ชัด โปรดระบุรายละเอียด <span class="text-muted">(ไม่บังคับ)</span></label>
+                        <textarea class="form-control" id="q5_4" rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- แสดงเมื่อไม่ได้ใช้ (Q1 <= 2) -->
+            <div id="group_unused" style="display: none;">
+                <!-- คำถามสาเหตุที่ไม่ได้ใช้ -->
+                <div class="mb-4 bg-white p-3 border rounded border-danger">
+                    <label class="form-label fw-bold text-danger">หากท่านยังไม่สามารถนำความรู้ไปใช้ สาเหตุ คือ (เลือกได้มากกว่า 1 ข้อ)</label>
+                    <div class="mt-2">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="q4" id="q4_1" value="ยังไม่มีโอกาสใช้"><label class="form-check-label" for="q4_1">ยังไม่มีโอกาสใช้</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="q4" id="q4_2" value="เนื้อหาไม่ตรงกับภารกิจ"><label class="form-check-label" for="q4_2">เนื้อหาไม่ตรงกับภารกิจ</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="q4" id="q4_3" value="จำรายละเอียดไม่ได้"><label class="form-check-label" for="q4_3">จำรายละเอียดไม่ได้</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" name="q4" id="q4_4" value="ต้องการตัวอย่างหรือคู่มือเพิ่มเติม"><label class="form-check-label" for="q4_4">ต้องการตัวอย่างหรือคู่มือเพิ่มเติม</label></div>
+                        <div class="form-check mt-2 d-flex align-items-center">
+                            <input class="form-check-input me-2" type="checkbox" name="q4" id="q4_other_check" value="other">
+                            <label class="form-check-label text-nowrap me-2" for="q4_other_check">อื่น ๆ ระบุ:</label>
+                            <input type="text" class="form-control form-control-sm w-75" id="q4_other_text" placeholder="ระบุเพิ่มเติม (ไม่บังคับ)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-outline-custom" onclick="showStep('step2')"><i class="fa-solid fa-arrow-left"></i> กลับไปเลือกกิจกรรม</button>
+                <button type="button" class="btn btn-gradient" onclick="processStep3()">ถัดไป <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- ================= Step 4 ================= -->
+        <div id="step4" class="step">
+            <h5 class="border-bottom pb-2 mb-4">ส่วนที่ 4: สรุปผลและข้อเสนอแนะเพิ่มเติม</h5>
+            
+            <div class="mb-4">
+                <label class="form-label fw-bold text-primary">ท่านคิดว่าการนำความรู้จากกิจกรรม RLPD TALK ไปประยุกต์ใช้ ส่งผลลัพธ์ต่อกอง/สำนัก ของท่านในระดับใด <span class="text-danger">*</span></label>
+                <div class="mt-2 border p-3 rounded bg-white">
+                    <div class="form-check mb-2"><input class="form-check-input mt-0" type="radio" name="org_impact" id="oi_5" value="5"><label class="form-check-label option-label" for="oi_5">ระดับ 5 (มีการพัฒนาเป็นโครงการใหม่ และสามารถขยายผลไปใช้ในหน่วยงานอื่นได้)</label></div>
+                    <div class="form-check mb-2"><input class="form-check-input mt-0" type="radio" name="org_impact" id="oi_4" value="4"><label class="form-check-label option-label" for="oi_4">ระดับ 4 (มีการกำหนดมาตรฐานการทำงานใหม่ที่ชัดเจนหรือเกิดนวัตกรรม/วิธีการใหม่ที่นำไปใช้จริง)</label></div>
+                    <div class="form-check mb-2"><input class="form-check-input mt-0" type="radio" name="org_impact" id="oi_3" value="3"><label class="form-check-label option-label" for="oi_3">ระดับ 3 (เริ่มมีการปรับวิธีการทำงานหรือมีการจัดทำคู่มือ/แนวทางการปฏิบัติงาน)</label></div>
+                    <div class="form-check mb-2"><input class="form-check-input mt-0" type="radio" name="org_impact" id="oi_2" value="2"><label class="form-check-label option-label" for="oi_2">ระดับ 2 (เกิดการแลกเปลี่ยนเรียนรู้ ความคิดเห็นหรือถอดบทเรียนเบื้องต้นภายในกอง/สำนัก)</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input mt-0" type="radio" name="org_impact" id="oi_1" value="1"><label class="form-check-label option-label" for="oi_1">ระดับ 1 (ยังไม่ปรากฎผลลัพธ์หรือการเปลี่ยนแปลงใด ๆ จากการดำเนินงาน)</label></div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold text-success">ท่านมีข้อเสนอแนะ หรือต้องการให้จัดกิจกรรม RLPD TALK ในหัวข้อใดในปีถัดไป (รวมถึงข้อเสนอรูปแบบการพัฒนาตนเองอื่นๆ) <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="suggestion_next_year" rows="5" placeholder="ระบุข้อเสนอแนะของท่าน..."></textarea>
+            </div>
+            
+            <div class="contact-info">
+                <p class="fw-bold mb-1">ติดต่อ: กลุ่มงานบริหารและพัฒนาทรัพยากรบุคคล ฝ่ายพัฒนาบุคลากร</p>
+                <p class="mb-1"><i class="fa-solid fa-phone"></i> 02 141 2803</p>
+                <p class="mb-0"><i class="fa-solid fa-phone"></i> นางสาวนิศาชล ชาญวารินทร์ 080 618 0133</p>
+            </div>
+            
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-outline-custom" onclick="showStep('step3')"><i class="fa-solid fa-arrow-left"></i> ย้อนกลับ</button>
+                <button type="button" class="btn btn-gradient" onclick="submitForm()"><i class="fa-solid fa-paper-plane"></i> บันทึกคำตอบและส่งแบบประเมิน</button>
+            </div>
+        </div>
+
+        <!-- ================= Step 5 ================= -->
+        <div id="step5" class="step">
+            <div class="text-center py-5">
+                <i class="fa-solid fa-circle-check text-success mb-4" style="font-size: 5rem;"></i>
+                <h4>บันทึกข้อมูลเรียบร้อยแล้ว</h4>
+                <p class="text-muted mt-3">ขอขอบคุณที่ร่วมเป็นส่วนหนึ่งในการเสนอแนะเพื่อพัฒนาองค์กร</p>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMjFuR-vQczdJfdEtcxA0ewomoEcAalBhT9jXOAkKl3ehjAIV2KMm5tDWderFoDQFTKQ/exec';
+    
+    function toggleProvince() {
+        const dept = document.getElementById('department').value;
+        const provBox = document.getElementById('province_box');
+        if (dept === 'สำนักงานยุติธรรมจังหวัด' || dept === 'ศูนย์ปฏิบัติการคุ้มครองสิทธิคดีค้ามนุษย์') {
+            provBox.style.display = 'block';
+            document.getElementById('province_input').required = true;
+        } else {
+            provBox.style.display = 'none';
+            document.getElementById('province_input').required = false;
+            document.getElementById('province_input').value = '';
+        }
+    }
+
+    const eventsData = [
+        { id: 1, name: "ครั้งที่ 1: From Grief to Relief จากบาดแผลสู่การเยียวยา", poster: "https://drive.google.com/thumbnail?id=13pX6HMjfLza7g8ueQh8KhaxHVyub6mAr&sz=w600", ppts: [{name: "สไลด์ประกอบ", url: "https://docs.google.com/presentation/d/1KJn79YhQp1Phh7Tje0tIupzrW_scmv-V/preview"}] },
+        { id: 2, name: "ครั้งที่ 2: สรุปงานวิจัยและแนวทางการจัดการ", poster: "https://drive.google.com/thumbnail?id=1htxakegBSJtQA5qOZgTP4USk2cd48a5c&sz=w600", ppts: [{name: "สไลด์ประกอบ", url: "https://drive.google.com/file/d/11bx5LeURnFq_inLsU1zPPTM0fI1KN_3n/preview"}] },
+        { id: 3, name: "Special ครั้งที่ 1: ถ่ายทอดความรู้จากนักเรียนทุน (Strategy-based)", poster: "https://drive.google.com/thumbnail?id=1PdvdU2cWzLXn9zQLXZhreZ3pA-DUdqZR&sz=w600", ppts: [
+            {name: "สไลด์ที่ 1", url: "https://drive.google.com/file/d/14chW3-XOBftSC9QwrIM0QToM22t3yjEm/preview"},
+            {name: "สไลด์ที่ 2", url: "https://drive.google.com/file/d/1Q6U9AlhMJBLUDP7WVl8Mn8HZSiF2uKxH/preview"},
+            {name: "สไลด์ที่ 3", url: "https://drive.google.com/file/d/16OOCSIL9_kEHfD5VpLeq4jpaEr-YL3uo/preview"},
+            {name: "สไลด์ที่ 4", url: "https://drive.google.com/file/d/1l7HLheyVj4tqm9I-9g77DCgiDcmonftX/preview"},
+            {name: "สไลด์ที่ 5", url: "https://drive.google.com/file/d/1yjCajreIEeMFIBq0FWYRUW20Bn6_vtES/preview"},
+            {name: "สไลด์ที่ 6", url: "https://drive.google.com/file/d/15PJMcGtTDgFW2NZEFKuK3KBll3y4QvnX/preview"},
+            {name: "สไลด์ที่ 7", url: "https://drive.google.com/file/d/1ISs9RxRk4bxLcpbtwPhxsflOAsuPMFw9/preview"},
+            {name: "สไลด์ที่ 8", url: "https://drive.google.com/file/d/11U_X4EKZ_mkEvNKicMCszYPXmeIVc_x9/preview"},
+            {name: "สไลด์ที่ 9", url: "https://drive.google.com/file/d/1PkIm-CehRIw9LfX89NeWWmohr0HdJLKM/preview"},
+            {name: "สไลด์ที่ 10", url: "https://drive.google.com/file/d/13-WRoLkN_mUiy-F7T6ZJoN3B6inUvRtk/preview"},
+            {name: "สไลด์ที่ 11", url: "https://drive.google.com/file/d/1u-KSv5r_n_ETBGvaqvJXfwslDEL0S5NC/preview"},
+            {name: "สไลด์ที่ 12", url: "https://drive.google.com/file/d/1jJZwytxrE3SQvv3P_0ZCxrX0p-FRii1w/preview"},
+            {name: "สไลด์ที่ 13", url: "https://drive.google.com/file/d/1_WRjQ-h_7GBZRoEYIcshdlCEBgAOKTw0/preview"},
+            {name: "สไลด์ที่ 14", url: "https://drive.google.com/file/d/1itXypHcHUp2_NUSEorOGJdpBtEbwjvzQ/preview"},
+            {name: "สไลด์ที่ 15", url: "https://drive.google.com/file/d/1qwOePBo5YiN2zfXEAJs4RUK6xr8p740X/preview"},
+            {name: "สไลด์ที่ 16", url: "https://drive.google.com/file/d/1RV7_J29hFz60HMKxRojIF0yFgtOKbbjh/preview"},
+            {name: "สไลด์ที่ 17", url: "https://drive.google.com/file/d/1--w5Fp0PA9P2QTzGCCYnrRzvbWDhqvgv/preview"},
+            {name: "สไลด์ที่ 18", url: "https://drive.google.com/file/d/1Ncw3VW3OlF2qIRclQEEAnSW0rmD1mT-M/preview"},
+            {name: "สไลด์ที่ 19", url: "https://drive.google.com/file/d/1bpHA6MiSZxXH9ika8GNYuiPVTywEFHHf/preview"},
+            {name: "สไลด์ที่ 20", url: "https://drive.google.com/file/d/1VweKB8TfW0N8Tcy0zSKMKLzxjTw6bPiL/preview"}
+        ]},
+        { id: 4, name: "ครั้งที่ 3: เรื่องนี้ต้องบอกต่อ...by กลุ่มงานคลัง", poster: "https://drive.google.com/thumbnail?id=1ubqq3nAr3xi_sHmpIp4xe-l1Uwdyc_n4&sz=w600", ppts: [{name: "สไลด์ประกอบ", url: "https://drive.google.com/file/d/1gA6QBvFKP5K8uMU6clk0KGzSZxpMpSYT/preview"}] },
+        { id: 5, name: "ครั้งที่ 4: มาตรการใหม่ในระบบกฎหมายไทย : การปรับเป็นพินัย", poster: "https://drive.google.com/thumbnail?id=1C_4GS8NV2AbTE4s2l3o7Zp_Scm5doNyz&sz=w600", ppts: [{name: "สไลด์ประกอบ", url: "https://drive.google.com/file/d/126ODoHcmaYTNHWz7u4YF0d2_Nq89ABt3/preview"}] },
+        { id: 6, name: "Special ครั้งที่ 2: การตรวจสอบข้อมูลฯ คุ้มครองพยาน", poster: "https://drive.google.com/thumbnail?id=1o6kP6JgqMNErvN60_8QvuMO3edvHh_R0&sz=w600", ppts: [{name: "สไลด์ประกอบ", url: "https://drive.google.com/file/d/1VnIabd6duwZa6YUuHA2fiUPDfWDUIwuG/preview"}] },
+        { id: 7, name: "ครั้งที่ 5: อาชีพราชการกับความยุติธรรมที่หายไป", poster: "https://drive.google.com/thumbnail?id=1YTHDGTmNkYAayduiygc1ZspAuwx8jo26&sz=w600", ppts: [{name: "สไลด์ 1", url: "https://drive.google.com/file/d/1Rm51aibM3FKM8xp7h2SLUnQLd32yNgWZ/preview"}, {name: "สไลด์ 2", url: "https://drive.google.com/file/d/1NlQYlTKeepI5DbNY2pAba5QuqHR6_ENl/preview"}] },
+        { id: 8, name: "ครั้งที่ 6: การเตรียมผลงานเพื่อรับรางวัล", poster: "https://drive.google.com/thumbnail?id=1rGYDEdVw3x2XCpHUmzEoQZQB9p_xrl2p&sz=w600", ppts: [{name: "สไลด์ 1", url: "https://drive.google.com/file/d/188aaybH6VecoFGP23P3lhmRkHM8BOAAQ/preview"}, {name: "สไลด์ 2", url: "https://drive.google.com/file/d/1eOpEw9Ffwkc9L07PYeLtBmz05siKGig9/preview"}] },
+        { id: 9, name: "ครั้งที่ 7: สื่อสารเพื่อขยายผลสิทธิมนุษยชน", poster: "https://drive.google.com/thumbnail?id=13mJUpZPKYs00LB5KCHLuF41NGhW3OZCA&sz=w600", ppts: [{name: "สไลด์ประกอบ", url: "https://drive.google.com/file/d/1YXqh_GwuoNVJGjmWzbSDJHF3f2F_QW8N/preview"}] },
+        { id: 10, name: "Special ครั้งที่ 3: แผนพัฒนารายบุคคล (IDP) 2569", poster: "https://drive.google.com/thumbnail?id=14TvLPbNtSsi0MK6X6z5ZCjBmoFEIFpqk&sz=w600", ppts: [{name: "สไลด์ 1", url: "https://drive.google.com/file/d/1MDH_TTnBvhdsm2-FW2DeBsM5Qj_75yg4/preview"}, {name: "สไลด์ 2", url: "https://drive.google.com/file/d/1DtHPyfqzjuldMHjYwU_Iv6yzGQia5tgx/preview"}] }
+    ];
+
+    let selectedEvents = [];
+
+    // สร้างกล่องรูปภาพโปสเตอร์
+    const posterContainer = document.getElementById('posterContainer');
+    eventsData.forEach(ev => {
+        const div = document.createElement('div');
+        div.className = 'poster-card';
+        div.innerHTML = `<img src="${ev.poster}" alt="${ev.name}"><div class="p-2 text-center small fw-bold text-truncate" style="font-size:0.8rem;" title="${ev.name}">${ev.name}</div>`;
+        div.onclick = function() {
+            this.classList.toggle('selected');
+            if (this.classList.contains('selected')) selectedEvents.push(ev);
+            else selectedEvents = selectedEvents.filter(e => e.id !== ev.id);
+        };
+        posterContainer.appendChild(div);
+    });
+
+    // เงื่อนไขซ่อน/แสดง ฟอร์มย่อย ใน Step 3
+    document.querySelectorAll('input[name="q1"]').forEach(el => {
+        el.addEventListener('change', function() {
+            const val = parseInt(this.value);
+            if (val >= 3) {
+                document.getElementById('group_used').style.display = 'block';
+                document.getElementById('group_unused').style.display = 'none';
+            } else {
+                document.getElementById('group_used').style.display = 'none';
+                document.getElementById('group_unused').style.display = 'block';
+            }
+        });
+    });
+
+    function showStep(id) {
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    // ตรวจสอบข้อมูลส่วนบุคคล
+    function showStep1To2() {
+        const inputs = document.getElementById('step1').querySelectorAll('input, select');
+        for(let i of inputs) if(!i.checkValidity()) { i.reportValidity(); return; }
+        showStep('step2');
+    }
+
+    // เตรียมหน้าจอ Review & Evaluate
+    function prepareStep3() {
+        if (selectedEvents.length === 0) { alert("กรุณาคลิกเลือกกิจกรรมอย่างน้อย 1 รายการ"); return; }
+        
+        let slideOptions = '';
+        let firstSlideUrl = '';
+        let hasSlides = false;
+
+        selectedEvents.forEach(ev => {
+            if (ev.ppts && ev.ppts.length > 0) {
+                hasSlides = true;
+                slideOptions += `<optgroup label="${ev.name}">`;
+                ev.ppts.forEach(ppt => {
+                    slideOptions += `<option value="${ppt.url}">${ppt.name}</option>`;
+                    if (!firstSlideUrl) firstSlideUrl = ppt.url;
+                });
+                slideOptions += `</optgroup>`;
+            }
+        });
+
+        const slideContainer = document.getElementById('masterSlideContainer');
+        if (hasSlides) {
+            slideContainer.innerHTML = `
+                <h6 class="fw-bold text-dark mb-3">ทบทวนสไลด์กิจกรรมที่ท่านเข้าร่วม</h6>
+                <div class="mb-2">
+                    <select class="form-select border-primary" onchange="document.getElementById('masterSlideFrame').src=this.value">
+                        ${slideOptions}
+                    </select>
+                </div>
+                <iframe id="masterSlideFrame" src="${firstSlideUrl}" width="100%" height="450" style="border:none; border-radius: 8px; background:#eee;"></iframe>
+            `;
+        } else {
+            slideContainer.innerHTML = `
+                <h6 class="fw-bold text-dark mb-3">ทบทวนสไลด์กิจกรรมที่ท่านเข้าร่วม</h6>
+                <p class="text-muted mb-0"><i class="fa-solid fa-circle-info"></i> กิจกรรมที่ท่านเลือกไม่มีเอกสารสไลด์ประกอบ</p>
+            `;
+        }
+
+        showStep('step3');
+    }
+
+    // ตรวจสอบการกรอกใน Step 3 แล้วไป Step 4
+    function processStep3() {
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        const q3 = document.querySelector('input[name="q3"]:checked');
+        
+        if(!q1 || !q3) { alert("กรุณาตอบแบบประเมินข้อ 1 และ 3 ให้ครบถ้วน"); return; }
+        
+        const q1Val = parseInt(q1.value);
+        if (q1Val >= 3) {
+            const q5_1 = document.getElementById('q5_1').value.trim();
+            const q5_2 = document.getElementById('q5_2').value.trim();
+            const q5_3 = document.getElementById('q5_3').value.trim();
+            if(!q5_1 || !q5_2 || !q5_3) {
+                alert("กรุณากรอกรายละเอียดในข้อ 5 ให้ครบถ้วน (ยกเว้นข้อ 5.4)");
+                return;
+            }
+        }
+        showStep('step4');
+    }
+
+    // บันทึกและส่งข้อมูลไปยัง Google Apps Script
+    async function submitForm() {
+        const oi = document.querySelector('input[name="org_impact"]:checked');
+        const suggestion = document.getElementById('suggestion_next_year').value.trim();
+        
+        if(!oi || !suggestion) { alert("กรุณาตอบคำถามในส่วนที่ 4 ให้ครบถ้วน"); return; }
+
+        const btn = document.querySelector('button[onclick="submitForm()"]');
+        btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> กำลังบันทึกข้อมูล...';
+
+        // รวบรวมข้อมูล Checkbox ที่เลือก
+        let q2_vals = [];
+        document.querySelectorAll('input[name="q2"]:checked').forEach(cb => {
+            q2_vals.push(cb.value === "other" ? "อื่นๆ: " + document.getElementById('q2_other_text').value : cb.value);
+        });
+
+        let q4_vals = [];
+        document.querySelectorAll('input[name="q4"]:checked').forEach(cb => {
+            q4_vals.push(cb.value === "other" ? "อื่นๆ: " + document.getElementById('q4_other_text').value : cb.value);
+        });
+
+        // นำรายชื่อกิจกรรมที่เลือกมารวมกันเป็นข้อความเดียว
+        const combinedEventNames = selectedEvents.map(e => e.name).join(" \n+ ");
+        
+        const payload = {
+            fullname: document.getElementById('fullname').value,
+            position: document.getElementById('position').value,
+            department: document.getElementById('department').value + (document.getElementById('province_input').value ? " จ."+document.getElementById('province_input').value : ""),
+            personnel_type: document.getElementById('personnel_type').value,
+            org_impact: oi.value,
+            suggestion_next_year: suggestion,
+            evaluations: [
+                {
+                    event_name: combinedEventNames,
+                    q1: document.querySelector('input[name="q1"]:checked')?.value || "",
+                    q2: q2_vals.join(", "),
+                    q3: document.querySelector('input[name="q3"]:checked')?.value || "",
+                    q4: q4_vals.join(", "),
+                    q5_1: document.getElementById('q5_1').value.trim(),
+                    q5_2: document.getElementById('q5_2').value.trim(),
+                    q5_3: document.getElementById('q5_3').value.trim(),
+                    q5_4: document.getElementById('q5_4').value.trim()
+                }
+            ]
+        };
+        
+        try {
+            await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'text/plain;charset=utf-8' } });
+            showStep('step5');
+        } catch(e) { 
+            showStep('step5');
+        }
+    }
+</script>
+</body>
+</html>
