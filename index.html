@@ -23,7 +23,7 @@
         .poster-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
         .poster-card:hover { transform: scale(1.03); }
         .poster-card.selected { border-color: #28a745; transform: scale(1.05); box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4); }
-        .poster-card.selected::after { content: '\f058'; font-family: 'FontAwesome'; position: absolute; top: 10px; right: 10px; color: #28a745; font-size: 24px; background: white; border-radius: 50%; width: 24px; height: 24px; line-height: 24px; text-align: center; }
+        .poster-card.selected::after { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; top: 10px; right: 10px; color: #28a745; font-size: 24px; background: white; border-radius: 50%; width: 24px; height: 24px; line-height: 24px; text-align: center; }
         .contact-info { background-color: #eef2f3; padding: 15px; border-radius: 10px; text-align: center; margin-top: 20px; border-left: 5px solid #764ba2; }
         .option-label { cursor: pointer; padding: 8px 12px; border-radius: 8px; transition: background 0.2s; display: block; margin-bottom: 5px; }
         .option-label:hover { background-color: #f8f9fa; }
@@ -42,10 +42,8 @@
     </h3>
 
     <form id="evalForm">
-        <!-- ================= Step 1 ================= -->
         <div id="step1" class="step active">
             
-            <!-- คำชี้แจง -->
             <div class="alert-instruction shadow-sm">
                 <h6 class="fw-bold mb-2"><i class="fa-solid fa-circle-info"></i> คำชี้แจง</h6>
                 <p class="mb-2" style="font-size: 0.95rem;">สำนักงานเลขานุการกรม โดยกลุ่มงานบริหารและพัฒนาทรัพยากรบุคคล จัดทำแบบติดตามผลฉบับนี้ เพื่อรวบรวมข้อมูลการนำความรู้ แนวคิด หรือประสบการณ์ที่ได้รับจากกิจกรรม RLPD TALK ไปประยุกต์ใช้ในการปฏิบัติงาน ตลอดจนใช้ประกอบการติดตามและประเมินผลสัมฤทธิ์ของกิจกรรม และการรายงานผลการดำเนินงานด้านการพัฒนาบุคลากรของกรม</p>
@@ -107,7 +105,6 @@
             <div class="text-end"><button type="button" class="btn btn-gradient" onclick="showStep1To2()">ถัดไป <i class="fa-solid fa-arrow-right"></i></button></div>
         </div>
 
-        <!-- ================= Step 2 ================= -->
         <div id="step2" class="step">
             <h5 class="border-bottom pb-2 mb-3">ส่วนที่ 2: เลือกกิจกรรมที่เข้าร่วม</h5>
             <p class="text-muted"><i class="fa-solid fa-hand-pointer"></i> สามารถเลือกได้มากกว่า 1 กิจกรรม โดยคลิกที่ภาพโปสเตอร์</p>
@@ -118,19 +115,15 @@
             </div>
         </div>
 
-        <!-- ================= Step 3: ทบทวนสไลด์และประเมินผลรวม ================= -->
         <div id="step3" class="step">
             
             <h5 class="border-bottom pb-2 mb-4 text-primary"><i class="fa-solid fa-file-powerpoint"></i> ส่วนที่ 3: ทบทวนเนื้อหาและประเมินผลกิจกรรม</h5>
             
-            <!-- โซนทบทวนสไลด์ -->
             <div class="slide-review-box" id="masterSlideContainer">
-                <!-- เนื้อหาสไลด์จะถูกสร้างด้วย Javascript ตามกิจกรรมที่เลือก -->
-            </div>
+                </div>
 
             <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-clipboard-check text-success"></i> แบบประเมินผลการนำความรู้ไปใช้ (ประเมินภาพรวมจากกิจกรรมที่ท่านเลือก)</h6>
             
-            <!-- คำถามข้อ 1 -->
             <div class="mb-4">
                 <label class="form-label fw-bold">ภายหลังการเข้าร่วมกิจกรรม RLPD TALK ท่านได้นำความรู้หรือแนวคิดที่ได้รับไปใช้ประโยชน์แล้วหรือไม่ <span class="text-danger">*</span></label>
                 <div class="mt-2">
@@ -142,7 +135,6 @@
                 </div>
             </div>
 
-            <!-- คำถามข้อ 3 -->
             <div class="mb-4">
                 <label class="form-label fw-bold">ความรู้ที่ได้รับจาก RLPD TALK มีประโยชน์ต่อการปฏิบัติงานของท่านในระดับใด <span class="text-danger">*</span></label>
                 <div class="mt-2">
@@ -154,9 +146,7 @@
                 </div>
             </div>
 
-            <!-- แสดงเมื่อเลือกนำไปใช้ (Q1 >= 3) -->
             <div id="group_used" style="display: none;">
-                <!-- คำถามการนำไปใช้ลักษณะใด -->
                 <div class="mb-4 bg-white p-3 border rounded">
                     <label class="form-label fw-bold text-success">หากท่านนำไปใช้แล้ว ท่านนำไปใช้ในลักษณะใด (เลือกได้มากกว่า 1 ข้อ)</label>
                     <div class="mt-2">
@@ -173,7 +163,6 @@
                     </div>
                 </div>
 
-                <!-- คำถามข้อ 5 -->
                 <div class="mb-4 bg-white p-3 border rounded border-success">
                     <label class="form-label fw-bold text-success">โปรดอธิบายผลที่เกิดขึ้นจากการนำความรู้หรือแนวคิดที่ได้รับจากกิจกรรม RLPD TALK ไปใช้ในการปฏิบัติงาน</label>
                     
@@ -207,9 +196,7 @@
                 </div>
             </div>
 
-            <!-- แสดงเมื่อไม่ได้ใช้ (Q1 <= 2) -->
             <div id="group_unused" style="display: none;">
-                <!-- คำถามสาเหตุที่ไม่ได้ใช้ -->
                 <div class="mb-4 bg-white p-3 border rounded border-danger">
                     <label class="form-label fw-bold text-danger">หากท่านยังไม่สามารถนำความรู้ไปใช้ สาเหตุ คือ (เลือกได้มากกว่า 1 ข้อ)</label>
                     <div class="mt-2">
@@ -232,7 +219,6 @@
             </div>
         </div>
 
-        <!-- ================= Step 4 ================= -->
         <div id="step4" class="step">
             <h5 class="border-bottom pb-2 mb-4">ส่วนที่ 4: สรุปผลและข้อเสนอแนะเพิ่มเติม</h5>
             
@@ -264,7 +250,6 @@
             </div>
         </div>
 
-        <!-- ================= Step 5 ================= -->
         <div id="step5" class="step">
             <div class="text-center py-5">
                 <i class="fa-solid fa-circle-check text-success mb-4" style="font-size: 5rem;"></i>
@@ -476,10 +461,17 @@
         };
         
         try {
-            await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'text/plain;charset=utf-8' } });
+            // เพิ่ม mode: 'no-cors' เพื่อแก้ปัญหาการส่งข้อมูลหา Google Apps Script
+            await fetch(SCRIPT_URL, { 
+                method: 'POST', 
+                mode: 'no-cors',
+                body: JSON.stringify(payload), 
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' } 
+            });
             showStep('step5');
         } catch(e) { 
-            showStep('step5');
+            console.error(e);
+            showStep('step5'); // ให้ผ่านไปหน้าสุดท้ายแม้เจอ error เครือข่าย (กรณีผู้ใช้ต้องการ)
         }
     }
 </script>
